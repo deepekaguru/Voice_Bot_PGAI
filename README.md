@@ -1,4 +1,4 @@
-# PGAI Voice Tester
+# Voice Bot PGAI
 
 An automated voice bot that simulates patients calling a medical clinic's
 AI scheduling agent. Built for the Pretty Good AI engineering challenge.
@@ -21,7 +21,7 @@ responses.
 
 **1. Clone the repository**
 ```bash
-git clone https://github.com/deepekaguru/pgai-voice-tester.git
+git clone https://github.com/deepekaguru/Voice-bot-PGAI.git
 cd pgai-voice-tester
 ```
 
