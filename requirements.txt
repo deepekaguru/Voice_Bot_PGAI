@@ -1,0 +1,6 @@
+twilio
+openai
+fastapi
+uvicorn
+websockets
+python-dotenv
