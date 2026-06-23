@@ -75,13 +75,13 @@ appointment change or booking.
 1. Call and successfully reschedule or book an appointment
 2. Agent says "You're all set" and call ends
 3. Final confirmation message arrives after the stream has
-   already closed
+   already closed 
 
 **Call references:**  
-
 This message does not appear in the saved transcript since it
 arrives after the stream closes. It is audible in the recording at
 the end of the call after the bot's closing line.
+
 ---
 
 ## Bug 4: Agent Offers Live Support Then Ignores Patient Choice
