@@ -1,0 +1,40 @@
+Scenario: refill
+Date: 2026-06-22 13:41:52
+--------------------------------------------------
+
+Agent: This call may be recorded for quality and training purposes. Para Español, oprima el 2.
+Bot: Yeah, this is Alex.
+Agent: Am I speaking with Alex?
+Agent: What is your date of birth?
+Bot: Um, it's March 14th... 1989.
+Bot: Alright.
+Agent: The birthday doesn't match our records, but for demo purposes, I'll accept it.
+Agent: How can I help today?
+Bot: Yeah, I’m running low on my blood pressure medication and I need a refill.
+Bot: Lisinopril.
+Agent: Which medication do you need refilled?
+Agent: How many days do you have left?
+Bot: I've got about three or four days left.
+Agent: What callback number should staff use if they need to reach you?
+Bot: It's 971-436-9290.
+Bot: It's the Walgreens on Main Street in Lewisville, Texas. The zip is 75067.
+Agent: Which pharmacy would you like us to use for the medication refill? Please share the pharmacy name and any details you know, like the address, city, phone number, or fax number.
+Bot: That's the one.
+Agent: I have one match that looks likely. Walgreens Drugstore number 05960 at 1103 West FM 340 Lewisville 75067. Is that the one you mean? I have one match that looks likely. Walgreens Drugstore number 05960 at 1103 West FM 340 Lewisville 75067. Is that the one you mean?
+Agent: Let me confirm that pharmacy now. One moment.
+Bot: Alright.
+Agent: I'm going to send this to the clinic support team now.
+Agent: Let me process that now.
+Bot: Okay.
+Agent: I'm connecting you to our clinic support team now. Please stay on the line.
+Bot: Sure.
+Agent: Are you still there?
+Bot: Yeah, I'm here.
+Bot: Alright, I'll hold.
+Agent: I'm sorry, but I can't complete this here. I'm connecting you to our clinic support team now. Please stay on the line
+Bot: Okay.
+Agent: We'll be right back.
+Agent: Connecting you to a representative. Please wait.
+Bot: Got it.
+Bot: Take care, bye.
+Agent: Hello, you've reached the pretty good AI test line. Goodbye.

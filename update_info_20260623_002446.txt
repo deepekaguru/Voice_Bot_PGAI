@@ -1,0 +1,23 @@
+Scenario: update_info
+Date: 2026-06-23 00:24:46
+--------------------------------------------------
+
+Agent: This call may be recorded for quality and training purposes. Para español, oprima el 2.
+Agent: Thanks for calling Pivot Point Orthopaedics.
+Bot: Yeah, this is Alex.
+Agent: Am I speaking with Alex?
+Bot: Um, it's March 14th... 1989.
+Agent: Please provide your date of birth.
+Bot: Yeah, so I recently moved and I tried updating my address in the portal but couldn't do it. Could you help me update it?
+Agent: The birthday doesn't match our records, but for demo purposes, I'll accept it. How can I help you today?
+Bot: Sure, thanks.
+Agent: I can help you update your address.
+Agent: What is your new address?
+Bot: Yeah, it's 123 Maple Street, Dallas, Texas. The zip is 75201.
+Bot: Okay, sure.
+Agent: Let me update your address with the clinic team. One moment.
+Bot: Nope, I'm good. I appreciate your help.
+Agent: I've sent your request to our clinic support team. They'll update your address and get back to you as soon as they can. Is there anything else you need help with today?
+Agent: You're all set.
+Agent: Have a great day!
+Bot: Thanks, bye.
