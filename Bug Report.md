@@ -76,6 +76,7 @@ without acknowledging the patient's response.
 3. Agent sends the text anyway
 
 **Call references:** 
+
 transcripts/scheduling_20260623_0104521.txt
 
 ---
