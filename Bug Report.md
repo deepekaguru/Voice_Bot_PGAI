@@ -75,6 +75,9 @@ without acknowledging the patient's response.
    message with these details?" respond with no
 3. Agent sends the text anyway
 
+Call references:
+transcripts/scheduling_20260623_0104521.txt
+
 ---
 ## Bug 4: Agent Offers Live Support Then Ignores Patient Choice
 
