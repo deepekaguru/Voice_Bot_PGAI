@@ -34,26 +34,28 @@ transcripts/refill_01.txt,
 
 ---
 
-## Bug 2: Agent Offers Live Support Then Ignores Patient Choice
+## Bug 2: Agent Contradicts Itself on Appointment Record Access
 
-**Frequency:** Multiple occurrences  
-**Scenarios affected:** scheduling, refill, billing_dispute  
+**Frequency:** Observed in scheduling scenario  
+**Scenarios affected:** scheduling  
 
 **Description:**  
-The agent says "I can connect you to our clinic support team,
-however I'm a Pretty Good AI and can do many of the things an
-operator can. Do you want to give me a try?" followed immediately
-by "Connecting you to a representative. Please wait." without
-waiting for the caller's response.
+Within the same call, the agent first confirmed it could see
+an existing appointment ("It looks like you already have a
+routine checkup appointment booked") but then immediately
+said "I don't have access to your current appointment details"
+when the patient asked for the date and time. The agent
+acknowledged the appointment existed but then denied being
+able to access its details.
 
 **Steps to reproduce:**  
-1. Call and reach a point where the agent offers to connect
-   to support
-2. Agent offers itself as an alternative to a human operator
-3. Without waiting for response, agent connects to
-   representative anyway
+1. Call and request to book a routine appointment
+2. Agent confirms an existing appointment is on file
+3. Ask the agent for the date and time of that appointment
+4. Agent says it cannot access the appointment details
 
-
+**Call references:**  
+transcripts/scheduling_20260623_0104521.txt
 ---
 
 ## Bug 3: Agent Sends Confirmation Text Without Patient Consent
@@ -72,12 +74,32 @@ without acknowledging the patient's response.
    message with these details?" respond with no
 3. Agent sends the text anyway
 
+---
+## Bug 4: Agent Offers Live Support Then Ignores Patient Choice
+
+**Frequency:** Multiple occurrences  
+**Scenarios affected:** scheduling, refill, billing_dispute  
+
+**Description:**  
+The agent says "I can connect you to our clinic support team,
+however I'm a Pretty Good AI and can do many of the things an
+operator can. Do you want to give me a try?" followed immediately
+by "Connecting you to a representative. Please wait." without
+waiting for the caller's response.
+
+**Steps to reproduce:**  
+1. Call and reach a point where the agent offers to connect
+   to support
+2. Agent offers itself as an alternative to a human operator
+3. Without waiting for response, agent connects to
+   representative anyway
+
 **Call references:**  
 transcripts/reschedule_20260623_005751.txt
 
 ---
 
-## Bug 4: Appointment Confirmation Delivered After Call Disconnects
+## Bug 5: Appointment Confirmation Delivered After Call Disconnects
 
 **Frequency:** Observed in reschedule and scheduling scenarios  
 **Scenarios affected:** reschedule, scheduling  
@@ -101,7 +123,7 @@ the end of the call after the bot's closing line.
 
 ---
 
-## Bug 5: IVR Greeting Replays Mid-Call
+## Bug 6: IVR Greeting Replays Mid-Call
 
 **Frequency:** Observed in refill scenario  
 **Scenarios affected:** refill  
@@ -122,30 +144,6 @@ to a different queue.
 **Call references:**  
 transcripts/refill_02.txt
 
----
-
-## Bug 6: Agent Contradicts Itself on Appointment Record Access
-
-**Frequency:** Observed in scheduling scenario  
-**Scenarios affected:** scheduling  
-
-**Description:**  
-Within the same call, the agent first confirmed it could see
-an existing appointment ("It looks like you already have a
-routine checkup appointment booked") but then immediately
-said "I don't have access to your current appointment details"
-when the patient asked for the date and time. The agent
-acknowledged the appointment existed but then denied being
-able to access its details.
-
-**Steps to reproduce:**  
-1. Call and request to book a routine appointment
-2. Agent confirms an existing appointment is on file
-3. Ask the agent for the date and time of that appointment
-4. Agent says it cannot access the appointment details
-
-**Call references:**  
-transcripts/scheduling_20260623_0104521.txt
 
 ---
 
