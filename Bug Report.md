@@ -30,7 +30,7 @@ representative.
 
 
 **Call references:**  
-transcripts/refill_01.txt,
+transcripts/refill_01.txt
 
 ---
 
@@ -55,7 +55,8 @@ able to access its details.
 4. Agent says it cannot access the appointment details
 
 **Call references:**  
-transcripts/scheduling_20260623_0104521.txt
+ transcripts/scheduling_20260623_0104521.txt
+ 
 ---
 
 ## Bug 3: Agent Sends Confirmation Text Without Patient Consent
