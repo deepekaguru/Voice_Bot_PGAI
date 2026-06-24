@@ -126,44 +126,45 @@ the end of the call after the bot's closing line.
 
 ---
 
-## Bug 6: IVR Greeting Replays Mid-Call
+## Bug 6: Agent Loses Internal State Mid-Call
 
-**Frequency:** Observed in refill scenario  
-**Scenarios affected:** refill  
+**Frequency:** Observed in refill scenario
+**Scenarios affected:** refill
 
-**Description:**  
-During an active call, the full IVR opening message replayed
-in the middle of the conversation, interrupting the agent
-mid-sentence. This confirms that the transfer/escalation
-mechanism restarts the entire call flow rather than connecting
-to a different queue.
+**Description:**
+During the refill scenario, the agent appeared to lose track
+of what it was doing mid-conversation. It said "I'm connecting
+you to our clinic support team now," then immediately said
+"Let me process that now" as if starting a new action, then
+said "I'm connecting you to our clinic support team now" again.
+The agent cycled through the same statements repeatedly without
+making progress, suggesting an internal state management issue.
 
-**Steps to reproduce:**  
-1. Call and engage in refill scenario
-2. Reach the point where agent attempts to process the refill
-3. IVR greeting replays mid-call
+**Steps to reproduce:**
+1. Call and request a medication refill
+2. Provide medication name, days remaining, callback number,
+   and pharmacy details
+3. Agent attempts to process the request and gets stuck
+   in a loop
 
 
 **Call references:**  
 transcripts/refill_02.txt
 
-
 ---
 
-## Bug 7: DOB Validation Leaks Internal Demo Logic
+## Bug 7: DOB Validation Failing
 
 **Frequency:** Every single call  
 **Scenarios affected:** All  
 
 **Description:**  
-After the caller provides their date of birth, the agent responds
-with: "The birthday doesn't match our records, but for demo purposes,
-I'll accept it." This message exposes internal demo/testing logic
-directly to the caller. In a production environment, real patients
-would see this message, which is both confusing and unprofessional.
-It also reveals that identity verification is not actually being
-enforced, which is a significant security and compliance concern for
-a HIPAA-adjacent healthcare product.
+The agent's date of birth validation behaves inconsistently
+across calls. In most calls, regardless of the date of birth
+provided, the agent responds with "The birthday doesn't match
+our records, but for demo purposes, I'll accept it,". However in some
+calls the DOB was accepted without this message, suggesting
+the validation logic is unreliable and non-deterministic.
 
 **Steps to reproduce:**  
 1. Call the test line
