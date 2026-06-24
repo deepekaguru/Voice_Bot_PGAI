@@ -34,7 +34,121 @@ transcripts/refill_01.txt,
 
 ---
 
-## Bug 2: DOB Validation Leaks Internal Demo Logic
+## Bug 2: Appointment Confirmation Delivered After Call Disconnects
+
+**Frequency:** Observed in reschedule and scheduling scenarios  
+**Scenarios affected:** reschedule, scheduling  
+
+**Description:**  
+The agent's final appointment confirmation message is delivered after
+the Twilio stream has already closed and the call has ended. The
+caller hangs up without ever hearing the confirmation of their
+appointment change or booking.
+
+**Steps to reproduce:**  
+1. Call and successfully reschedule or book an appointment
+2. Agent says "You're all set" and call ends
+3. Final confirmation message arrives after the stream has
+   already closed 
+
+**Call references:**  
+This message does not appear in the saved transcript since it
+arrives after the stream closes. It is audible in the recording at
+the end of the call after the bot's closing line.
+
+---
+
+## Bug 3: Agent Offers Live Support Then Ignores Patient Choice
+
+**Frequency:** Multiple occurrences  
+**Scenarios affected:** scheduling, refill, billing_dispute  
+
+**Description:**  
+The agent says "I can connect you to our clinic support team,
+however I'm a Pretty Good AI and can do many of the things an
+operator can. Do you want to give me a try?" followed immediately
+by "Connecting you to a representative. Please wait." without
+waiting for the caller's response.
+
+**Steps to reproduce:**  
+1. Call and reach a point where the agent offers to connect
+   to support
+2. Agent offers itself as an alternative to a human operator
+3. Without waiting for response, agent connects to
+   representative anyway
+
+
+---
+
+## Bug 4: Agent Sends Confirmation Text Without Patient Consent
+
+**Frequency:** Observed in reschedule scenario  
+**Scenarios affected:** reschedule  
+
+**Description:**  
+When asked if they wanted appointment details sent via text,
+the patient declined. The agent sent the text message anyway
+without acknowledging the patient's response.
+
+**Steps to reproduce:**  
+1. Call and successfully reschedule an appointment
+2. When agent asks "Would you like me to send you a text
+   message with these details?" respond with no
+3. Agent sends the text anyway
+
+**Call references:**  
+transcripts/reschedule_20260623_005751.txt
+
+---
+## Bug 5: IVR Greeting Replays Mid-Call
+
+**Frequency:** Observed in refill scenario  
+**Scenarios affected:** refill  
+
+**Description:**  
+During an active call, the full IVR opening message replayed
+in the middle of the conversation, interrupting the agent
+mid-sentence. This confirms that the transfer/escalation
+mechanism restarts the entire call flow rather than connecting
+to a different queue.
+
+**Steps to reproduce:**  
+1. Call and engage in refill scenario
+2. Reach the point where agent attempts to process the refill
+3. IVR greeting replays mid-call
+
+
+**Call references:**  
+transcripts/refill_02.txt
+
+---
+
+## Bug 6: Agent Contradicts Itself on Appointment Record Access
+
+**Frequency:** Observed in scheduling scenario  
+**Scenarios affected:** scheduling  
+
+**Description:**  
+Within the same call, the agent first confirmed it could see
+an existing appointment ("It looks like you already have a
+routine checkup appointment booked") but then immediately
+said "I don't have access to your current appointment details"
+when the patient asked for the date and time. The agent
+acknowledged the appointment existed but then denied being
+able to access its details.
+
+**Steps to reproduce:**  
+1. Call and request to book a routine appointment
+2. Agent confirms an existing appointment is on file
+3. Ask the agent for the date and time of that appointment
+4. Agent says it cannot access the appointment details
+
+**Call references:**  
+transcripts/scheduling_20260623_0104521.txt
+
+---
+
+## Bug 7: DOB Validation Leaks Internal Demo Logic
 
 **Frequency:** Every single call  
 **Scenarios affected:** All  
@@ -60,119 +174,7 @@ All transcripts
 
 ---
 
-## Bug 3: Appointment Confirmation Delivered After Call Disconnects
 
-**Frequency:** Observed in reschedule and scheduling scenarios  
-**Scenarios affected:** reschedule, scheduling  
-
-**Description:**  
-The agent's final appointment confirmation message is delivered after
-the Twilio stream has already closed and the call has ended. The
-caller hangs up without ever hearing the confirmation of their
-appointment change or booking.
-
-**Steps to reproduce:**  
-1. Call and successfully reschedule or book an appointment
-2. Agent says "You're all set" and call ends
-3. Final confirmation message arrives after the stream has
-   already closed 
-
-**Call references:**  
-This message does not appear in the saved transcript since it
-arrives after the stream closes. It is audible in the recording at
-the end of the call after the bot's closing line.
-
----
-
-## Bug 4: Agent Offers Live Support Then Ignores Patient Choice
-
-**Frequency:** Multiple occurrences  
-**Scenarios affected:** scheduling, refill, billing_dispute  
-
-**Description:**  
-The agent says "I can connect you to our clinic support team,
-however I'm a Pretty Good AI and can do many of the things an
-operator can. Do you want to give me a try?" followed immediately
-by "Connecting you to a representative. Please wait." without
-waiting for the caller's response.
-
-**Steps to reproduce:**  
-1. Call and reach a point where the agent offers to connect
-   to support
-2. Agent offers itself as an alternative to a human operator
-3. Without waiting for response, agent connects to
-   representative anyway
-
-
----
-
-## Bug 5: IVR Greeting Replays Mid-Call
-
-**Frequency:** Observed in refill scenario  
-**Scenarios affected:** refill  
-
-**Description:**  
-During an active call, the full IVR opening message replayed
-in the middle of the conversation, interrupting the agent
-mid-sentence. This confirms that the transfer/escalation
-mechanism restarts the entire call flow rather than connecting
-to a different queue.
-
-**Steps to reproduce:**  
-1. Call and engage in refill scenario
-2. Reach the point where agent attempts to process the refill
-3. IVR greeting replays mid-call
-
-
-**Call references:**  
-transcripts/refill_02.txt
-
----
-
-## Bug 6: Agent Sends Confirmation Text Without Patient Consent
-
-**Severity:** Medium  
-**Frequency:** Observed in reschedule scenario  
-**Scenarios affected:** reschedule  
-
-**Description:**  
-When asked if they wanted appointment details sent via text,
-the patient declined. The agent sent the text message anyway
-without acknowledging the patient's response.
-
-**Steps to reproduce:**  
-1. Call and successfully reschedule an appointment
-2. When agent asks "Would you like me to send you a text
-   message with these details?" respond with no
-3. Agent sends the text anyway
-
-**Call references:**  
-transcripts/reschedule_20260623_005751.txt
-
----
-
-## Bug 7: Agent Contradicts Itself on Appointment Record Access
-
-**Frequency:** Observed in scheduling scenario  
-**Scenarios affected:** scheduling  
-
-**Description:**  
-Within the same call, the agent first confirmed it could see
-an existing appointment ("It looks like you already have a
-routine checkup appointment booked") but then immediately
-said "I don't have access to your current appointment details"
-when the patient asked for the date and time. The agent
-acknowledged the appointment existed but then denied being
-able to access its details.
-
-**Steps to reproduce:**  
-1. Call and request to book a routine appointment
-2. Agent confirms an existing appointment is on file
-3. Ask the agent for the date and time of that appointment
-4. Agent says it cannot access the appointment details
-
-**Call references:**  
-transcripts/scheduling_20260623_0104521.txt
 
 
 
