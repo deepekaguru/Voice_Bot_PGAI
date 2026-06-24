@@ -99,8 +99,6 @@ waiting for the caller's response.
 3. Without waiting for response, agent connects to
    representative anyway
 
-**Call references:**  
-transcripts/reschedule_20260623_005751.txt
 
 ---
 
