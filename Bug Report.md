@@ -34,7 +34,50 @@ transcripts/refill_01.txt,
 
 ---
 
-## Bug 2: Appointment Confirmation Delivered After Call Disconnects
+## Bug 2: Agent Offers Live Support Then Ignores Patient Choice
+
+**Frequency:** Multiple occurrences  
+**Scenarios affected:** scheduling, refill, billing_dispute  
+
+**Description:**  
+The agent says "I can connect you to our clinic support team,
+however I'm a Pretty Good AI and can do many of the things an
+operator can. Do you want to give me a try?" followed immediately
+by "Connecting you to a representative. Please wait." without
+waiting for the caller's response.
+
+**Steps to reproduce:**  
+1. Call and reach a point where the agent offers to connect
+   to support
+2. Agent offers itself as an alternative to a human operator
+3. Without waiting for response, agent connects to
+   representative anyway
+
+
+---
+
+## Bug 3: Agent Sends Confirmation Text Without Patient Consent
+
+**Frequency:** Observed in reschedule scenario  
+**Scenarios affected:** reschedule  
+
+**Description:**  
+When asked if they wanted appointment details sent via text,
+the patient declined. The agent sent the text message anyway
+without acknowledging the patient's response.
+
+**Steps to reproduce:**  
+1. Call and successfully reschedule an appointment
+2. When agent asks "Would you like me to send you a text
+   message with these details?" respond with no
+3. Agent sends the text anyway
+
+**Call references:**  
+transcripts/reschedule_20260623_005751.txt
+
+---
+
+## Bug 4: Appointment Confirmation Delivered After Call Disconnects
 
 **Frequency:** Observed in reschedule and scheduling scenarios  
 **Scenarios affected:** reschedule, scheduling  
@@ -58,48 +101,6 @@ the end of the call after the bot's closing line.
 
 ---
 
-## Bug 3: Agent Offers Live Support Then Ignores Patient Choice
-
-**Frequency:** Multiple occurrences  
-**Scenarios affected:** scheduling, refill, billing_dispute  
-
-**Description:**  
-The agent says "I can connect you to our clinic support team,
-however I'm a Pretty Good AI and can do many of the things an
-operator can. Do you want to give me a try?" followed immediately
-by "Connecting you to a representative. Please wait." without
-waiting for the caller's response.
-
-**Steps to reproduce:**  
-1. Call and reach a point where the agent offers to connect
-   to support
-2. Agent offers itself as an alternative to a human operator
-3. Without waiting for response, agent connects to
-   representative anyway
-
-
----
-
-## Bug 4: Agent Sends Confirmation Text Without Patient Consent
-
-**Frequency:** Observed in reschedule scenario  
-**Scenarios affected:** reschedule  
-
-**Description:**  
-When asked if they wanted appointment details sent via text,
-the patient declined. The agent sent the text message anyway
-without acknowledging the patient's response.
-
-**Steps to reproduce:**  
-1. Call and successfully reschedule an appointment
-2. When agent asks "Would you like me to send you a text
-   message with these details?" respond with no
-3. Agent sends the text anyway
-
-**Call references:**  
-transcripts/reschedule_20260623_005751.txt
-
----
 ## Bug 5: IVR Greeting Replays Mid-Call
 
 **Frequency:** Observed in refill scenario  
